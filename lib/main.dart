@@ -9,12 +9,11 @@ class ProgrammaticViewNavigation extends StatefulWidget {
 }
 
 class ViewNavigationState extends State<ProgrammaticViewNavigation> {
-  DateRangePickerController _controller;
+  final DateRangePickerController _controller = DateRangePickerController();
 
   @override
   void initState() {
-    _controller = DateRangePickerController();
-    _controller.view=DateRangePickerView.year;
+    _controller.view = DateRangePickerView.year;
     super.initState();
   }
 
@@ -26,20 +25,19 @@ class ViewNavigationState extends State<ProgrammaticViewNavigation> {
           children: [
             Container(
               margin: const EdgeInsets.fromLTRB(50, 130, 50, 0),
-              child: RaisedButton(child: Text('Change view'),onPressed: (){
-                _controller.view=DateRangePickerView.month;
-              },),
+              child: ElevatedButton(
+                child: Text('Change view'),
+                onPressed: () {
+                  _controller.view = DateRangePickerView.month;
+                },
+              ),
             ),
             Card(
               margin: const EdgeInsets.fromLTRB(50, 50, 50, 110),
-              child: SfDateRangePicker(
-                controller: _controller
-              ),
+              child: SfDateRangePicker(controller: _controller),
             ),
           ],
         ),
-
-        // This trailing comma makes auto-formatting nicer for build methods.
       ),
     );
   }
